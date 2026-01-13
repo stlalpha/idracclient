@@ -1,5 +1,5 @@
 --- /tmp/original_idracclient.py	2026-01-12 23:47:59.317396730 -0600
-+++ idracclient.py	2026-01-12 23:29:35.464895216 -0600
++++ idracclient.py	2026-01-12 23:51:33.088638927 -0600
 @@ -61,8 +61,7 @@
  
      args = cmd.parse_args()
@@ -18,3 +18,11 @@
      ]
  
      if not args.no_native_libs:
+@@ -231,6 +231,7 @@
+         "version=2",
+         "reconnect=2",
+         "vmprivilege=true",
++        "vm=1",
+         "helpurl=https://%s:%d/help/contents.html" % (java_kvmhost, java_idracport),
+     ])
+ 
