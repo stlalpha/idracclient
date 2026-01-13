@@ -1,0 +1,2 @@
+# iDRAC KVM Client Python Dependencies
+aiohttp>=3.8.0

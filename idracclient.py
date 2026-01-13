@@ -29,8 +29,13 @@ import zipfile
 import aiohttp
 
 
+__version__ = "1.0.0"
+
+
 def main():
     cmd = argparse.ArgumentParser()
+    cmd.add_argument("--version", "-v", action="version",
+                     version=f"idracclient {__version__}")
     cmd.add_argument("hostname")
     cmd.add_argument("--port", "-p", type=int, default=443,
                      help="https port to connect to for idrac")
