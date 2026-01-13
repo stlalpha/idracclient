@@ -46,7 +46,14 @@ echo "✓ Installed to $INSTALL_DIR/$SCRIPT_NAME"
 echo ""
 echo "Installing Python dependencies..."
 if command -v pip3 &> /dev/null; then
-    pip3 install --user aiohttp >/dev/null 2>&1 || pip3 install --user aiohttp
+    # Check if we're in a virtual environment
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        # In venv, don't use --user flag
+        pip3 install aiohttp >/dev/null 2>&1 || pip3 install aiohttp
+    else
+        # Not in venv, use --user flag
+        pip3 install --user aiohttp >/dev/null 2>&1 || pip3 install --user aiohttp
+    fi
     echo "✓ Installed aiohttp"
 else
     echo "⚠️  Warning: pip3 not found, you'll need to install aiohttp manually:"
