@@ -64,11 +64,45 @@ Downloads needed Java files and sets up port forwarding via SSH for remote acces
 
 ## Java Compatibility
 
-The script was originally designed for Java 8, but has been updated to work with modern Java versions (tested with Java 25).
+⚠️ **IMPORTANT: Java 8 is strongly recommended for full functionality**
 
-If you experience issues with newer Java versions, you can:
-1. Install Java 8 and specify it: `--java /path/to/java8`
-2. Skip native libraries: `--no-native-libs`
+The script was originally designed for Java 8. While it has been updated to launch with modern Java versions (tested with Java 25), **keyboard input may not work properly with Java 9+** due to Swing/AWT compatibility issues.
+
+### Known Issues with Java 9+:
+- ✅ **Mouse input**: Works correctly
+- ❌ **Keyboard input**: May not function (confirmed issue on Java 20+)
+- ⚠️ **Native libraries**: Require `--enable-native-access` flag
+
+### Recommended Setup:
+
+**Option 1: Use Java 8 (Best compatibility)**
+
+Install Java 8 for your operating system:
+- **Linux**: Use your package manager (apt, yum, pacman, etc.) to install `openjdk-8-jre` or similar
+- **macOS**: `brew install openjdk@8` or download from [Adoptium](https://adoptium.net/)
+- **Windows**: Download from [Adoptium](https://adoptium.net/) or [Oracle](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html)
+- **Any OS**: [Liberica JDK 8 FX](https://bell-sw.com/pages/downloads/#jdk-8-lts) (includes JavaFX)
+
+Then run with Java 8:
+```bash
+# Linux/macOS
+./idracclient.py --java /path/to/java8/bin/java 192.168.0.132
+
+# Windows
+python idracclient.py --java "C:\Path\To\Java8\bin\java.exe" 192.168.0.132
+```
+
+**Option 2: Use newer Java (Mouse only, limited keyboard)**
+```bash
+# Works for viewing, but keyboard may not function
+./idracclient.py 192.168.0.132
+```
+
+**Option 3: Skip native libraries**
+```bash
+# Limited functionality, but fewer compatibility issues
+./idracclient.py --no-native-libs 192.168.0.132
+```
 
 ## Examples
 
@@ -101,4 +135,7 @@ Released under GNU GPLv3 or any later version
 
 - Fixed compatibility with Python 3.10+ (replaced deprecated `asyncio.get_event_loop()`)
 - Added `--enable-native-access` flag for Java 9+ compatibility
-- Updated documentation with comprehensive usage examples
+- Enabled VirtualMedia support (`vm=1` parameter)
+- Documented Java 8 requirement for full keyboard/input functionality
+- Added cross-platform Java installation instructions (Linux/macOS/Windows)
+- Updated documentation with comprehensive usage examples and troubleshooting

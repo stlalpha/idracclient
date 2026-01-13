@@ -231,6 +231,7 @@ async def run(args):
         "version=2",
         "reconnect=2",
         "vmprivilege=true",
+        "vm=1",
         "helpurl=https://%s:%d/help/contents.html" % (java_kvmhost, java_idracport),
     ])
 

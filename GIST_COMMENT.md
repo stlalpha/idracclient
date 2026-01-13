@@ -22,6 +22,16 @@ ret = asyncio.run(run(args))
 "--enable-native-access=ALL-UNNAMED",
 ```
 
+### 3. Enabled VirtualMedia Support
+**Enhancement from @chisaato's comment:** Added `vm=1` parameter to enable VirtualMedia functionality
+```python
+# Added parameter (line 234):
+"vm=1",
+```
+
+### 4. Documented Java 8 Requirement
+**Based on community feedback (@chisaato, @delta-whiplash, @fuzunspm):** Added warnings about keyboard input issues with Java 9+ and recommendations to use Java 8 for full functionality
+
 ## Testing
 - ✅ Tested on Python 3.14.2 with Java 25.0.1
 - ✅ Successfully connected to Dell iDRAC at 192.168.0.132:5900
