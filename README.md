@@ -4,6 +4,8 @@ Dell iDRAC client launcher for Linux, macOS and Windows. Compatible with Dell iD
 
 Downloads needed Java files and sets up port forwarding via SSH for remote access to server consoles.
 
+**Note:** This is a fork/update of the original script by Jonas Jelten, modified for compatibility with modern Python (3.10+) and Java (9+) versions.
+
 ## Features
 
 - Automatic download of iDRAC KVM Java files
@@ -86,11 +88,17 @@ If you experience issues with newer Java versions, you can:
 
 ## License
 
-(c) 2018-2019 Jonas Jelten <jelten@in.tum.de>
+Original work (c) 2018-2019 Jonas Jelten <jelten@in.tum.de>
 
 Released under GNU GPLv3 or any later version
 
-## Updates
+## Credits
+
+- **Original Author:** Jonas Jelten <jelten@in.tum.de>
+- This repository contains modernization updates for Python 3.10+ and Java 9+ compatibility
+
+## Updates in This Fork
 
 - Fixed compatibility with Python 3.10+ (replaced deprecated `asyncio.get_event_loop()`)
 - Added `--enable-native-access` flag for Java 9+ compatibility
+- Updated documentation with comprehensive usage examples
