@@ -24,13 +24,20 @@ Downloads needed Java files and sets up port forwarding via SSH for remote acces
 
 ### Quick Install (Recommended)
 
-One-line installation via curl:
+**Linux/macOS:**
 ```bash
 curl -sSL https://raw.githubusercontent.com/stlalpha/idracclient/master/install.sh | bash
 ```
 
+**Windows (PowerShell):**
+```powershell
+iwr -useb https://raw.githubusercontent.com/stlalpha/idracclient/master/install.ps1 | iex
+```
+
 This will:
-- Download the script to `~/.local/bin/idracclient`
+- Download the script to the appropriate location
+  - Linux/macOS: `~/.local/bin/idracclient`
+  - Windows: `%LOCALAPPDATA%\idracclient\idracclient.bat`
 - Install Python dependencies (aiohttp)
 - Check for Python and Java
 - Add to your PATH (if needed)
@@ -59,17 +66,23 @@ This will:
 
 ### Direct connection:
 ```bash
+# Linux/macOS
 ./idracclient.py your-idrac-hostname
+
+# Windows
+python idracclient.py your-idrac-hostname
+# or after installation:
+idracclient your-idrac-hostname
 ```
 
 ### With custom username and port:
 ```bash
-./idracclient.py --username administrator --port 5900 192.168.0.132
+idracclient --username administrator --port 5900 192.168.0.132
 ```
 
 ### Through SSH jumphost:
 ```bash
-./idracclient.py -J jumphost.example.com your-idrac-hostname
+idracclient -J jumphost.example.com your-idrac-hostname
 ```
 
 ### Common options:
