@@ -1,0 +1,20 @@
+--- /tmp/original_idracclient.py	2026-01-12 23:47:59.317396730 -0600
++++ idracclient.py	2026-01-12 23:29:35.464895216 -0600
+@@ -61,8 +61,7 @@
+ 
+     args = cmd.parse_args()
+ 
+-    loop = asyncio.get_event_loop()
+-    ret = loop.run_until_complete(run(args))
++    ret = asyncio.run(run(args))
+ 
+     exit(ret)
+ 
+@@ -213,6 +212,7 @@
+     invocation = [
+         args.java,
+         "-cp", str(mainjar),
++        "--enable-native-access=ALL-UNNAMED",
+     ]
+ 
+     if not args.no_native_libs:
